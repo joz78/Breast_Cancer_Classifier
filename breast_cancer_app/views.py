@@ -4,20 +4,17 @@ from rest_framework.response import Response
 from rest_framework import status
 import os
 
-# 🧠 Suppress TensorFlow logs BEFORE importing TensorFlow
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
 import numpy as np
 from PIL import Image
 import tensorflow as tf
 
-# 🧹 Additional TensorFlow log suppression
 tf.get_logger().setLevel('ERROR')
 
 # Model path
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'ml_model/best_model (1).keras')
 
-# 🧠 Lazy load model to avoid printing its structure during import
 model = None
 
 def get_model():
